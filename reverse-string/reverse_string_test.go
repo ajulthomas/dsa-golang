@@ -1,20 +1,30 @@
-package main
+package reverse_string
 
-import "testing"
+import (
+	"fmt"
+	"testing"
 
-type TestCase struct {
-	testInput      string
-	expectedOutput string
-}
+	"github.com/ajulthomas/dsa-golang/model"
+)
 
-var testCases = []TestCase{
-	{"apple", "elppa"}, {"hello", "olleh"},
+type TestCases []model.TestCase
+
+var testCases = TestCases{
+	{TestInput: "apple", ExpectedOutput: "elppa"},
+	{TestInput: "hello", ExpectedOutput: "olleh"},
 }
 
 func TestReverse(t *testing.T) {
-	for _, testCase := range testCases {
-		if output := Reverse(testCase.testInput); output != testCase.expectedOutput {
-			t.Errorf("Output %q not equal to expected %q", output, testCase.expectedOutput)
+	fmt.Println("Running Tests \n================= ")
+	for index, testCase := range testCases {
+		var output string = Reverse(testCase.TestInput)
+		if output != testCase.ExpectedOutput {
+			t.Errorf("Output %q not equal to expected %q", output, testCase.ExpectedOutput)
 		}
+		fmt.Printf("CASE %v ====> PASSED: Testcase: %v, Expected_Output: %v, Output: %v \n \n",
+			index,
+			testCase.TestInput,
+			testCase.ExpectedOutput,
+			output)
 	}
 }

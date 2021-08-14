@@ -1,10 +1,4 @@
-package main
-
-import "fmt"
-
-func main() {
-	fmt.Println(Reverse("George"))
-}
+package reverse_string
 
 func Reverse(str string) string {
 	len := len(str)
